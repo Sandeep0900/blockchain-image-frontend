@@ -40,6 +40,7 @@ export const connectWallet = async () => {
 
     return { contractInstance, selectedAccount };
   } catch (error) {
+    if (loadingToast) toast.dismiss(loadingToast);
     toast.error("Wallet connection failed");
     console.error(error);
     return { error: "WALLET_CONNECTION_FAILED" };
